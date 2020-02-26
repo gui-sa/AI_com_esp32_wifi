@@ -1,0 +1,38 @@
+
+
+
+####05/02/2020:
+
+*Instalada biblioteca que possibilita programar o esp32 via arduino IDE.Para instalar usei o link:
+https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-mac-and-linux-instructions/
+
+*Para solucionar o problema do serial importing acesse o link:
+https://askubuntu.com/questions/741943/problem-in-import-installing-python-modules-pyserial-in-ubuntu-15
+
+*Para solucionar o problema do ttyUSB0, usei o tutorial do link:
+https://sudomod.com/forum/viewtopic.php?t=6075
+sudo chmod a+rw /dev/ttyUSB0  toda vez que desconectar a porta, o que é bem bunda, o arduino mandou consultar:
+https://playground.arduino.cc/Linux/All/#Permission
+Outra coisa, aparentemente portas  'RTC' precisam ser desativadas antes de ser utilizadas como I/O
+
+*https://randomnerdtutorials.com/esp32-pinout-reference-gpios/
+Uma tabela mostrando as configs dos GPIOS
+
+*https://playground.arduino.cc/Linux/All/#Permission
+
+####21/02/2020:
+
+1) Arrumar o problema de permissao do linux:
+	echo $USER // Para mostrar o nome do seu usuario
+	sudo usermod -a -G dialout nomedousuario    //Para permitir o acesso aos perifericos
+	Reiniciar
+
+2) Aprender a ler portas analógicas
+	Tambem chamadas de portas ADC
+	As leituras são efetuadas de 0 - 3.3 V
+	Resolução de 4095
+
+3) Aprender a escrever em portas pwm
+	Exercicio PWM e led com potenciometro
+
+

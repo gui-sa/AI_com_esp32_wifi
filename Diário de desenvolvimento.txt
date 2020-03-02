@@ -1,4 +1,4 @@
-
+﻿
 
 
 ####05/02/2020:
@@ -34,5 +34,26 @@ Uma tabela mostrando as configs dos GPIOS
 
 3) Aprender a escrever em portas pwm
 	Exercicio PWM e led com potenciometro
+
+
+####02/03/2020:
+
+1)Aprender a usar a comunicação I2C como mestre! Para isso, ESP 32 sera comunicado com um ds1307.
+	*https://randomnerdtutorials.com/esp32-i2c-communication-arduino-ide/
+		*https://randomnerdtutorials.com/esp32-pinout-reference-gpios/
+	Estes sites nos diz que GPIO21 = SDA E GPIO 22 = SCL
+	A biblioteca wire.h parece funcionar da maneira convencional.
+	Este site parece usar um metodo muiiito interessante para escanear um dispositivo I2C. basicamente, a logica é que um endereço vai de 0 -> 127 pois na comunicacao i2c temos 7 bits de endereço e o mais significativo e de leitura ou escrita (8 bits no total = 1 B)
+		*https://www.sparkfun.com/datasheets/Components/DS1307.pdf
+		Datasheet do ds1307
+		Read_address = 232
+		Write_address = 104
+		Segundos  = 0;
+		Formato codificado.
+
+
+
+
+
 
 

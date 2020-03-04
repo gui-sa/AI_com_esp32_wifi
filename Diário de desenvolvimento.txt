@@ -1,13 +1,13 @@
 ﻿
 
 
-####05/02/2020:
+	####05/02/2020:    troubleshot of installation
 
-*Instalada biblioteca que possibilita programar o esp32 via arduino IDE.Para instalar usei o link:
-https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-mac-and-linux-instructions/
+	*Instalada biblioteca que possibilita programar o esp32 via arduino IDE.Para instalar usei o link:
+	https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-mac-and-linux-instructions/
 
-*Para solucionar o problema do serial importing acesse o link:
-https://askubuntu.com/questions/741943/problem-in-import-installing-python-modules-pyserial-in-ubuntu-15
+	*Para solucionar o problema do serial importing acesse o link:
+	https://askubuntu.com/questions/741943/problem-in-import-installing-python-modules-pyserial-in-ubuntu-15
 
 *Para solucionar o problema do ttyUSB0, usei o tutorial do link:
 https://sudomod.com/forum/viewtopic.php?t=6075

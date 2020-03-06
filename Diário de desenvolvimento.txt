@@ -81,6 +81,29 @@ Ensinou a utilizar a biblioteca WiFi.h para se conectar à rede wifi existente.
 Conferindo os diferentes retornos da funcao WiFi.status().
 
 
+#### 05/03/2020
+
+	1 )A ideia é aprender a comunicar bem via biblioteca wifi e depois entende-la otimizando o processo de latencia e segurança.
+
+* https://rntlab.com/question/best-way-to-communicate-between-esp32-and-pc/
+	Este link comenta sobre diferentes maneiras de fazer uma conexao esp32 - computador.
+
+* https://randomnerdtutorials.com/esp32-web-server-arduino-ide/
+	Este link ensina a ligar leds do computador ou do celular, enfim qualquer disp de rede 
+		Serial.println(WiFi.localIP()); //colocado apos a conexao e serve para printar seu IP local
+		server.begin();  //Inicia o servidor
+		
+		no loop
+		WiFiClient client = server.available(); // Listen for incoming clients WiFiClient é um tipo de objeto criado pela biblioteca
+			Se o client for 0 - ninguem se conectou, se for 1, alguem se conectou
+		client.connected é 1 quando o client continua conectado
+		client.available() é dif de 0 qndo tem byte para ler
+		client.read() lê o byte.
+	Neste link ainda é ensinado como criar e estilizar um pouco a pagina web. Aparentemente tudo segue uma programação html
+
+*https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-web-server-arduino-ide/
+	Usa outras bibliotecas para fazer um webserver assincrono.
+
 
 
 

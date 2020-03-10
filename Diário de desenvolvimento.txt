@@ -57,3 +57,46 @@ Uma tabela mostrando as configs dos GPIOS
 
 
 
+
+
+
+
+####09/03/2020:
+
+
+	
+Em uma reunião, um membro comentou sobre a integrabilidade do tensorflow com o micropython.
+	O micropython é uma ferramenta que pouco explorei, porém, integrar o tf facilita demais no percurso e densenvolvimento de uma AI já que nele temos o otimizador e ferramentas matriciais já integrado.
+
+
+							!!!!)  Estudar um pouco sobre o micropython e até testá-lo para os casos comuns.
+
+
+
+
+
+
+
+
+
+####10/03/2020
+
+	Encontrei no meu pendrive, alguns codigos demonstração do curso de arduino.
+	Aproveitei para salvá-lo nesse mesmo repo, ja que um dos objetivos é o aprendizado de microcontrolador
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -36,6 +36,15 @@ Uma tabela mostrando as configs dos GPIOS
 	Exercicio PWM e led com potenciometro
 
 
+
+
+
+
+
+
+
+
+
 ####02/03/2020:
 
 1)Aprender a usar a comunicação I2C como mestre! Para isso, ESP 32 sera comunicado com um ds1307.
@@ -50,6 +59,90 @@ Uma tabela mostrando as configs dos GPIOS
 		Write_address = 104
 		Segundos  = 0;
 		Formato codificado.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### 03/03/2020:
+
+	1)Primeiros passos sobre a conexao wifi:
+		-Como funciona?
+		-É seguro?
+		-O que esta biblioteca faz?
+*https://techtutorialsx.com/2017/04/24/esp32-connecting-to-a-wifi-network/
+Ensinou a utilizar a biblioteca WiFi.h para se conectar à rede wifi existente.
+
+*https://www.arduino.cc/en/Reference/WiFiStatus
+Conferindo os diferentes retornos da funcao WiFi.status().
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### 05/03/2020
+
+	1 )A ideia é aprender a comunicar bem via biblioteca wifi e depois entende-la otimizando o processo de latencia e segurança.
+
+* https://rntlab.com/question/best-way-to-communicate-between-esp32-and-pc/
+	Este link comenta sobre diferentes maneiras de fazer uma conexao esp32 - computador.
+
+* https://randomnerdtutorials.com/esp32-web-server-arduino-ide/
+	Este link ensina a ligar leds do computador ou do celular, enfim qualquer disp de rede 
+		Serial.println(WiFi.localIP()); //colocado apos a conexao e serve para printar seu IP local
+		server.begin();  //Inicia o servidor
+		
+		no loop
+		WiFiClient client = server.available(); // Listen for incoming clients WiFiClient é um tipo de objeto criado pela biblioteca
+			Se o client for 0 - ninguem se conectou, se for 1, alguem se conectou
+		client.connected é 1 quando o client continua conectado
+		client.available() é dif de 0 qndo tem byte para ler
+		client.read() lê o byte.
+	Neste link ainda é ensinado como criar e estilizar um pouco a pagina web. Aparentemente tudo segue uma programação html
+
+*https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-web-server-arduino-ide/
+	Usa outras bibliotecas para fazer um webserver assincrono
+
+
+
+
+
+
+
+
+
 
 
 
@@ -79,10 +172,17 @@ Em uma reunião, um membro comentou sobre a integrabilidade do tensorflow com o 
 
 
 
+
+
+
+
+
+
 ####10/03/2020
 
 	Encontrei no meu pendrive, alguns codigos demonstração do curso de arduino.
 	Aproveitei para salvá-lo nesse mesmo repo, ja que um dos objetivos é o aprendizado de microcontrolador
+
 
 
 

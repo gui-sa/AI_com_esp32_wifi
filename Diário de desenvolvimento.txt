@@ -105,5 +105,17 @@ Conferindo os diferentes retornos da funcao WiFi.status().
 	Usa outras bibliotecas para fazer um webserver assincrono.
 
 
+#### 21/03/2020:
+
+*https://docs.micropython.org/en/latest/esp32/tutorial/intro.html
+Esse link é suposto de ser toda a documentação do micropython para esp32
+1- Baixar firmware mais atualizado e estável : https://micropython.org/download#esp32
+
+
+
+
+
+
+
 
 

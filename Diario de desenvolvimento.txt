@@ -187,6 +187,84 @@ Em uma reunião, um membro comentou sobre a integrabilidade do tensorflow com o 
 
 
 
+#### 23/03/2020
+
+
+
+	O objetivo de hoje é aprender sobre o micropython:
+		10)O que é?
+			Micropython é um metodo de programação interpretado por python, otmizado para embarcados.
+			Desta forma o Micropython funciona tambem como um OS facilitando a utilização do hardware como um todo.
+		20)Quais as bibliotecas disponiveis?
+		30)Consigo controlar as funções do esp32 normalmente?
+			Consigo, em real-time.
+
+
+		40)Como programo?
+			Uma vez instalado, voce acessa via terminal dois arquivos: boot.py e main.py
+			boot.py funciona como a funcão setup
+			main.py como a loop.
+
+			Bibliotecas sao adicionadas ate onde sua memoria flash suporta
+
+			Para acessar o portal de comando, usamos :
+				picocom /dev/ttyUSB0 -b115200
+				
+				ctrl+D soft Reset
+
+				import machine (todas as funcionalidades perifericas do esp 32)
+				p = Pin(<GPIO>,Pin.OUT)
+				p.value(<1/0>)
+
+			*https://www.youtube.com/watch?v=QopRAwUP5ds
+				ctrl +A ctrl + x      exit pipocom
+
+
+				Usar o ampy para loudar arquivos do linux para o micropython os
+
+					ampy -p /dev/ttyUSB0 <comandos> para usar um comando do linux x python na porta ttyUSB0 os comandos sao parecidos com o do linux
+
+			
+		50)Como instalá-lo?
+
+			*https://docs.micropython.org/en/latest/esp32/tutorial/intro.html
+				Baixa um binario		
+				Instala no linux o esptool.py
+				esptool.py --port /dev/ttyUSB0 erase_flash
+				esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 <Diretorio do arquivo>
+			*https://docs.micropython.org/en/latest/esp8266/tutorial/repl.html
+				sudo apt-get install picocom
+			*https://core-electronics.com.au/tutorials/copy-files-to-micropython.html
+				pip install adafruit-ampy
+
+
+
+	Agora que ja sabemos como proseguir, vamos em frente?
+
+	A ideia é blinkar um led da porta 13 de 1 em 1 segundo
+	
+	Uma nova pasta sera colocada no repositorio : esp32_micropython
+
+
+	
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

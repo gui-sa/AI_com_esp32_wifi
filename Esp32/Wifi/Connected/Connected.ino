@@ -1,7 +1,7 @@
 #include "WiFi.h"
  
-const char* ssid = "RaioLuxTintas";//Nome da rede
-const char* password =  "raiolux1020";//Senha da rede
+const char* ssid = "nome_da_rede";//Nome da rede
+const char* password =  "senha";//Senha da rede
  
 void setup() {
  

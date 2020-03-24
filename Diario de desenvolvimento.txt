@@ -178,6 +178,19 @@ Em uma reunião, um membro comentou sobre a integrabilidade do tensorflow com o 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 ####10/03/2020
 
 	Encontrei no meu pendrive, alguns codigos demonstração do curso de arduino.
@@ -187,67 +200,174 @@ Em uma reunião, um membro comentou sobre a integrabilidade do tensorflow com o 
 
 
 
-#### 23/03/2020
 
 
 
-	O objetivo de hoje é aprender sobre o micropython:
-		10)O que é?
-			Micropython é um metodo de programação interpretado por python, otmizado para embarcados.
-			Desta forma o Micropython funciona tambem como um OS facilitando a utilização do hardware como um todo.
-		20)Quais as bibliotecas disponiveis?
-		30)Consigo controlar as funções do esp32 normalmente?
-			Consigo, em real-time.
-
-
-		40)Como programo?
-			Uma vez instalado, voce acessa via terminal dois arquivos: boot.py e main.py
-			boot.py funciona como a funcão setup
-			main.py como a loop.
-
-			Bibliotecas sao adicionadas ate onde sua memoria flash suporta
-
-			Para acessar o portal de comando, usamos :
-				picocom /dev/ttyUSB0 -b115200
-				
-				ctrl+D soft Reset
-
-				import machine (todas as funcionalidades perifericas do esp 32)
-				p = Pin(<GPIO>,Pin.OUT)
-				p.value(<1/0>)
-
-			*https://www.youtube.com/watch?v=QopRAwUP5ds
-				ctrl +A ctrl + x      exit pipocom
-
-
-				Usar o ampy para loudar arquivos do linux para o micropython os
-
-					ampy -p /dev/ttyUSB0 <comandos> para usar um comando do linux x python na porta ttyUSB0 os comandos sao parecidos com o do linux
-
-			
-		50)Como instalá-lo?
-
-			*https://docs.micropython.org/en/latest/esp32/tutorial/intro.html
-				Baixa um binario		
-				Instala no linux o esptool.py
-				esptool.py --port /dev/ttyUSB0 erase_flash
-				esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 <Diretorio do arquivo>
-			*https://docs.micropython.org/en/latest/esp8266/tutorial/repl.html
-				sudo apt-get install picocom
-			*https://core-electronics.com.au/tutorials/copy-files-to-micropython.html
-				pip install adafruit-ampy
 
 
 
-	Agora que ja sabemos como proseguir, vamos em frente?
 
-	A ideia é blinkar um led da porta 13 de 1 em 1 segundo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				#### 23/03/2020
+
+
+
+					O objetivo de hoje é aprender sobre o micropython:
+						10)O que é?
+							Micropython é um metodo de programação interpretado por python, otmizado para embarcados.
+							Desta forma o Micropython funciona tambem como um OS facilitando a utilização do hardware como um todo.
+						20)Quais as bibliotecas disponiveis?
+						30)Consigo controlar as funções do esp32 normalmente?
+							Consigo, em real-time.
+
+
+						40)Como programo?
+							Uma vez instalado, voce acessa via terminal dois arquivos: boot.py e main.py
+							boot.py funciona como a funcão setup
+							main.py como a loop.
+
+							Bibliotecas sao adicionadas ate onde sua memoria flash suporta
+
+							Para acessar o portal de comando, usamos :
+								picocom /dev/ttyUSB0 -b115200
+								
+								ctrl+D soft Reset
+
+								import machine (todas as funcionalidades perifericas do esp 32)
+								p = Pin(<GPIO>,Pin.OUT)
+								p.value(<1/0>)
+
+							*https://www.youtube.com/watch?v=QopRAwUP5ds
+								ctrl +A ctrl + x      exit pipocom
+
+
+								Usar o ampy para loudar arquivos do linux para o micropython os
+
+									ampy -p /dev/ttyUSB0 <comandos> para usar um comando do linux x python na porta ttyUSB0 os comandos sao parecidos com o do linux
+
+							
+						50)Como instalá-lo?
+
+							*https://docs.micropython.org/en/latest/esp32/tutorial/intro.html
+								Baixa um binario		
+								Instala no linux o esptool.py
+								esptool.py --port /dev/ttyUSB0 erase_flash
+								esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 <Diretorio do arquivo>
+							*https://docs.micropython.org/en/latest/esp8266/tutorial/repl.html
+								sudo apt-get install picocom
+							*https://core-electronics.com.au/tutorials/copy-files-to-micropython.html
+								pip install adafruit-ampy
+
+
+
+					Agora que ja sabemos como proseguir, vamos em frente?
+
+					A ideia é blinkar um led da porta 13 de 1 em 1 segundo
+					
+					Uma nova pasta sera colocada no repositorio : esp32_micropython
+
+
+					
+						
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### 24/03/2020:
+
+
+	O objetivo de hoje:
 	
-	Uma nova pasta sera colocada no repositorio : esp32_micropython
+		
+		05)Tensorflow para microcontroladores. O que é? e como instalá-lo
+
+			*https://www.tensorflow.org/lite/microcontrollers
+				Este site explica o que é o tensorflow-lite e mostra as compatibilidades. O esp32 É compativel... Porem somento o devkit2 e com ESP IDF
 
 
-	
-				
+	!!!!) Nao vale a pena estudar micropython porque nenhuma biblioteca high-level é compatível. Fora isso, todas as bibliotecas do arduino serao perdidas e o arduino  é mais otmizado.
+	????) O que é ESP IDF?
+		ESP IDF é um pacote de ferramentas e biliotecas que fazem com que um editor e um compilador C++/C compile um codigo para o ESP32 da melhor forma possível.
+		ESP IDF nao é uma IDE.. É um toolchain. Sem o toolchain nao é possível gravar os dados do seu programa no aparelho.
+
+
+*https://docs.espressif.com/projects/esp-idf/en/latest/esp32/
+	Este é o site da espressif que apresenta a ESP IDF. 
+
+	!!!!)Nao parece valer a pena... Aparentemente voce programa em C++, instala um toochain da espressif e baixa um editor qlqr... 
+		O problem se encontra na falta de suporte com o uso dessa IDF. Mesmo ela sendo mais rapida e eficaz que o arduino IDE, a diferença nao é tao grande a ponto de trocar suporte x qualidade.
+
+
+
+					!!!!) Nao tem como correr... Em algum momento terei que desenvolver ferramentas algebricas para realizar o feed forward.
+
+
+	Como nao tenho como processar os dados (eu nao tenho dados pois nao sei comunicar camera ainda, mas vamos supor que eu tivesse), vou focar em garantir o canal de comunicação. Ou seja, daqui pra frente utilizarei o arduino  IDE, bluetooth ou wifi para comunicar o computador ao esp 32.
+	Comunicar-se com o computador é uma forma de evitar ter que desenvolver algoritmos de otimização e também, vai facilitar o data science.
+
+
+
+	Honestamente:
+		
+		10)Como desenvolver um algortimo em python no computador que se comunica com o esp32 ou outro dispositivo?
+
+		20)Aprender e criar uma interface grafica
+
+		30)Aprender banco de dados (basico pelo menos)
+
+		40)Aprender o BLE ou bluetooth do ESP 32
+
+
+			50)Como orientar objetos em C++ ?
+
+			60) O que são Callback functions?
+
+		70)Aprender a comunicar wifi com o esp32
+
+			80)Segurança de dados (basica).
+
+
+
+
+		
 
 
 

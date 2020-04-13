@@ -372,6 +372,50 @@ Em uma reunião, um membro comentou sobre a integrabilidade do tensorflow com o 
 
 
 
+#### 13/04/2020:
+	Estabelecimento de metas.
+	
+
+
+------------------------------------------------------------------------------------Metas de Abril 2020-------------------------------------------------------------------------------------------
+
+O objetivo daqui pra frente é criar o canal de comunicação entre o desktop e o esp32 ou arduino. Um dos canais consideraveis é o bluetooth.
+	Primeiras considerações:
+		->Bluetooth é uma maneira segura de nao contar com wifi de locais e comunicar-se via wireless.
+		->Como faço segurança de dados? Segurança de dados pode ser importante para proteger a equipe
+		->Aparentemente o servidor é baseado no TCP-IP.Nao sei o que é tcp-ip
+		*Os topicos anteriores exigem conhecimento em web Backend -- tudo esta levando a crer que talvez seja uma boa ideia estudar WEB backend..
+		->Terei que aprender frontend básico atraves de interface grafica...
+		
+	Ordem de implementacão:
+		->Liberando o MVP - prototico - sem segurança de rede - sem inteface. Um programinha que troque alguma informaçãozinha via BLUETOOTH  (Aprender BLE no esp32 tambem sera necessario)
+		->Comunicar o prototipo MVP com o esp32 e ver se consigo transmitir todos os dados que preciso : pode ser do desktop para o esp -- uma rede neural convolucional e ver quanto tempo leva.
+		->Testar TinyML que prometeu um tensorflow lite para esp32.
+		->Testar com dois ultrasons : Qual lado o robo deve virar? Testar via NNFC
+		->Como treinar uma rede para aprender estrategias?
+		->Aprendendo TCP_IP!!		
+		->Aprendendo Backend!!
+		->Aprendendo Frontend!!
+		->Robo perseguidor de caixas de leite 1.0v!!!!
+		
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#### 13/04/2020
+	->Bluetooth é uma maneira segura de nao contar com wifi de locais e comunicar-se via wireless.
+		Existem bibliotecas que cortam caminho e nos ajudam a tirar um versionamento rapido. Primeira biblioteca que pretendo pesquisar é 'bluetool'.
+			*https://pypi.org/project/bluetool/
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -413,6 +413,26 @@ O objetivo daqui pra frente é criar o canal de comunicação entre o desktop e 
 
 
 
+#### 14/04/2020:
+Comecei estudando TCP-IP -- Quando exemos com bluetooth, a maneira pelo qual ele se comunica é baseada no mesmo protocolo
+	PROTOCOLO DE REDE : conjunto de regras que sincronizam os dados.
+	TCP_IP :  conjunto de protocolos de rede para comunicação de dispositivos. LAN _ Local Area Network e WAN _Wide Area Network
+	Padrao vs implemetação : padronizada via RFC (define os protocolos).
+		Camadas de aplicacao: API - interface de comunicação.  - - escolhe entre TCP ou UDP. Operaçoes de rede: resolucao de nome -- pega o www.com e identifica a maquina, DNS, enfim, op de rede. Aplicaçoes de usuarios finais: POP, HTTP, TDS, MAP.	
+		Camadas de transporte: escolhe entre TCP?UDP e eles segmentam a mensagem. TCP tem a garantia da integridade do pacote (possui ack). O UDP so envia.
+		Camadas de rede:	
+			IP - mecanismo de endereçamento e como a ensagem vai ser rotiada pela rede
+			ARP - Endereço de hardware 
+			ICMP/PING - 
+			IGMP -
+			Interface de rede - Onde o dado é realmente enviado
+
+
+
+
+
+
+
 
 
 

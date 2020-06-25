@@ -1,0 +1,49 @@
+METAS ATIVAS
+
+
+-> Começando no dia 25/06/2020, estudar controle linear e fazer um sistema real de temperatura (não podendo passar da temperatura esperada). A outra ideia é fazer um codigo que mapeie algo.
+
+
+
+
+
+
+
+
+#### 25/06/2020:
+
+
+O estudo de controle na verdade foi iniciado apartir da iniciativa de um carrinho serguidor de linha no ultimo mês...
+A vantagem do controle linear é que, tecnicas de controle são totalmente matemáticas e esta ciencia ja foi muito bem desenvolvida pela comunidade cientifica e por isso pode ser validada matematicamente (diferente de AI).
+
+
+
+O que ja foi feito:
+
+	Descobri que existem tecnicas PID e PI e que todas elas precisam de uma modelagem matematica por tras.
+	Porém, se não tiver, tudo bem, existem metodos heuristicos.
+
+
+
+A meta que forneci para aprender controle é de dois meses com inicio no dia 25/06/2020. Comecei comprando um livro de nome 'Controle Linear de Sistemas Dinâmicos: Teoria, Ensaios Práticos e Exercícios' dos autores  José C. Geromel (Autor), Rubens H. Korogui (Autor) muito bem avaliados.
+
+Fora isso, encontrei um pdf do livro de controle do OGATA 'Engenharia de Controle moderno' que estava por um preço altissimo e foi recomendado pelo professor de controle linear na UFU.
+
+
+
+
+Como a ideia de tudo isso é fazer um cleaner, portanto, ja comprei 2x motores com encoder e 2x pontes H para que possa colocar o conhecimento a prova.
+
+Enquanto nao possuir os componentes não sera possivel fazer o chassis.
+
+
+Ganancia para o proximo dia de desenvolvimento: 
+
+	->Iniciar leitura dos livros de controle.
+
+
+
+
+
+
+

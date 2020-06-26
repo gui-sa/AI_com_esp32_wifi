@@ -46,4 +46,36 @@ Ganancia para o proximo dia de desenvolvimento:
 
 
 
+#### 26/06/2020:
+
+O livro do OGATA é um livro de engenharia voltado para o ultimo ano de enegenharia e por isso cobra materias como EDO, LAPLACE, analise matricial e vetorial e termodinamica.
+
+Ele coloca fontes de estudo para construir o conhecimento nessas areas para o nivel dele. O objetivo é entao aproveitar 100% do material! Alem de aprender controle, reconstruir todas essas bases!
+
+
+Logo de cara ele comeca dando uma revisao historiaca e começar desenvolvendo o erro e a constantes K em cima de um erro que ele diz ser funcao escalar... Infelizmente ja possui o eixo dos complexos e nao consegui encontrar nenhuma fonte sobre...
+
+
+*https://www.youtube.com/watch?v=xlE1bF7gB-0
+	Me salva... Introduçao aos sistemas de controle. Acho que vou assistir o me salva primeiro pra ver se pego uma breve base, ou pelo menos, revise a algo.
+
+
+
+
+*https://www.youtube.com/watch?v=W78Oe8JRkHY
+	Me salva... Revisao de transformada de laplace.
+	Infelizmente, parece que so tem uma aula disso e ficou beeem incompleto...
+	A proxima aula ja era sobre PID... e começou bem mal.
+
+
+
+
+
+
+
+
+
+
+
+
 

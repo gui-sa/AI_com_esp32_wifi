@@ -1,4 +1,4 @@
-METAS ATIVAS
+﻿METAS ATIVAS
 
 
 -> Começando no dia 25/06/2020, estudar controle linear e fazer um sistema real de temperatura (não podendo passar da temperatura esperada). A outra ideia é fazer um codigo que mapeie algo.
@@ -66,6 +66,33 @@ Logo de cara ele comeca dando uma revisao historiaca e começar desenvolvendo o 
 	Me salva... Revisao de transformada de laplace.
 	Infelizmente, parece que so tem uma aula disso e ficou beeem incompleto...
 	A proxima aula ja era sobre PID... e começou bem mal.
+
+
+
+
+
+#### 09/07/2020:
+
+Basicamente no dias anteriores nao registrados eu to assisindo à aulas de controle no link:
+	https://www.youtube.com/watch?v=VhbIGDqdX3E&list=PLALrL4i0Pz6CfqappJPo-45HZj0AavVyO&index=4
+Muito boas
+
+Para testar o controle comprei no mercado livre um kit com dois motores DC 6V com encoder. O objetivo é usar o encoder para controlar os motores.
+Montei um cartizinho.
+
+
+Porem para cargo de testes, tanto do motor, tanto das funcionalidades maximas do esp32, quero fazer um aplicativo de celular para comunicar-se via bluetooth com o ESP32, como se fosse um carrinho de controle remoto.
+
+	*Como fazer seu proprio aplicativo android?
+		*Como fazer um aplicativo android comunicar-se via bluetooh?
+		*Se não for trivial, utilize o app inventor.
+
+
+*Antes de chegar nesse nivel quero fazer um teste no driver e no carrinho -> Teste de motores criado
+
+
+*https://www.youtube.com/watch?v=y0KNW133DY0
+	Este canal esta criando aplicativo android utilizando uma programação mais realista.
 
 
 

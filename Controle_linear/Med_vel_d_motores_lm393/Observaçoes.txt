@@ -1,0 +1,10 @@
+Problemas:
+
+
+	-Não é possível criar operação artiméticas complexas em interrupçoes e timers.
+		Em outras palavras não consigo medir a velocidade de forma muito exata.
+		O contador ficou ótimo.
+
+	-Não consegui separar o task de ação do task de decisão em uma linha de operação só.
+
+

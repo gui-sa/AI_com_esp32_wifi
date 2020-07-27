@@ -1,11 +1,11 @@
 #include <EEPROM.h>
 /*
  * Memoria EEPROM: Memória NAO VOLÁTIL
- * No caso do arduino UNO o tamanho total (visualisado no datasheet) de 1KB
- *EEPROM.write(endereço de 0->999,variavel de desejo de 1 Byte)
- *EEPROM.read(endereço de 0->999)
+ * No caso do arduino UNO o tamanho total (visualisado no datasheet) de 1KB->1024 Bytes
+ *EEPROM.write(endereço de 0->1023,variavel de desejo de 1 Byte)
+ *EEPROM.read(endereço de 0->1023)
  */
-#define eeprom_comp 1000
+#define eeprom_comp 1024
 
 
 void limpar_eeprom(){

@@ -26,21 +26,37 @@ int freq = 5000;  //Frequencia do pwm
 
 //Logica de controle
 int tempo_atras =0;
+
 int count_dir=0;
 int count_esq=0;
+
 float rpm_dir=0;
 float rpm_esq=0;
+
 int furos_encoder = 20;
+
 int intensidade_dir=0;
 int intensidade_esq=0;
 
 int freq_ref = 200;
+float tempo_aquisicao = 100;//ms
+
 float erro_dir;
 float erro_esq;
+
+float erro_dir_ant =0 ;
+float erro_esq_ant =0 ;
+
 float integral_erro_dir= 0;
 float integral_erro_esq= 0;
+
+float der_erro_dir = 0;
+float der_erro_esq = 0;
+
 float kp = 0.4;
-float ki = 1.4;
+float Ti = 2;
+float Td = 0.1;
+float N = 1;
 
 void IRAM_ATTR f_int1 (){  // É NECESSARIO ESSE ATRIBUTO IRAM_ATTR  //Esta funcao contabiliza quantas vezes o laser direito deu rising 
   count_dir++;
@@ -110,7 +126,7 @@ void setup() {
 
 void loop() {
 
-  if((millis()-tempo_atras)>100){
+  if((millis()-tempo_atras)>tempo_aquisicao){
     detachInterrupt(encoder_dir);
     detachInterrupt(encoder_esq);
 
@@ -122,33 +138,55 @@ void loop() {
     count_dir = 0;
     count_esq = 0;
     
+    Serial.print(freq_ref);
+    Serial.print(",");    
     Serial.print(rpm_esq);
     Serial.print(",");
     Serial.println(rpm_dir);
-        
+
+    erro_dir_ant = erro_dir;
+    erro_esq_ant = erro_esq;
+            
     erro_dir = freq_ref - rpm_dir;
     erro_esq = freq_ref - rpm_esq;
+
+    der_erro_dir = (erro_dir - erro_dir_ant)/(tempo_aquisicao/1000.0); 
+    der_erro_esq = (erro_esq - erro_esq_ant)/(tempo_aquisicao/1000.0);
         
-    integral_erro_dir = integral_erro_dir +  erro_dir*0.1;
-    integral_erro_esq = integral_erro_esq +  erro_esq*0.1;
+    integral_erro_dir = integral_erro_dir +  erro_dir*(tempo_aquisicao/1000.0);
+    integral_erro_esq = integral_erro_esq +  erro_esq*(tempo_aquisicao/1000.0);
     
-    intensidade_dir = erro_dir*kp + integral_erro_dir*ki;
-    intensidade_esq = erro_esq*kp + integral_erro_esq*ki;
+    intensidade_dir = kp*(erro_dir + integral_erro_dir/Ti + Td*der_erro_dir);
+    intensidade_esq = kp*(erro_esq + integral_erro_esq/Ti + Td*der_erro_esq);
+
+
+//    if(intensidade_dir>1250){
+//      integral_erro_dir = 0;//Protecao contra wind-up
+//    }
+//    
+//    if(intensidade_esq>1250){
+//      integral_erro_esq = 0;//Protecao contra wind-up
+//    }
         
-    if(intensidade_dir>255)
-      intensidade_dir=255;
+    if(intensidade_dir>255){
+      intensidade_dir=255;//limite da planta pwm
+    }
+
+    if(intensidade_dir<80){
+      intensidade_dir = 80;//limite da planta pwm
+    }
     
-    if(intensidade_dir<70)
-      intensidade_dir = 0;
-      
-    if(intensidade_esq>255)
-      intensidade_esq=255;
+    if(intensidade_esq>255){
+      intensidade_esq=255;//limite da planta pwm
+    }
     
-    if(intensidade_esq<70)
-      intensidade_esq = 70;
-            
-    motor_dir(0,intensidade_dir);
-    motor_esq(0,intensidade_esq);
+    if(intensidade_esq<80){
+      intensidade_esq = 80;//limite da planta pwm
+    }
+
+
+    motor_dir(1,intensidade_dir);
+    motor_esq(1,intensidade_esq);
     
 
     attachInterrupt(digitalPinToInterrupt(encoder_dir),f_int1, FALLING);//Um ciclo do encoder é contado quando ele acaba de apagar.

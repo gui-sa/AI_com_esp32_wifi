@@ -26,7 +26,7 @@ int freq = 5000;  //Frequencia do pwm
 
 //Logica de controle
 int tempo_atras =0;
-
+int tempo_atras2 =0;
 int count_dir=0;
 int count_esq=0;
 
@@ -39,7 +39,7 @@ int intensidade_dir=0;
 int intensidade_esq=0;
 
 int freq_ref = 200;
-float tempo_aquisicao = 100;//ms
+float tempo_aquisicao = 200;//ms
 
 float erro_dir;
 float erro_esq;
@@ -49,13 +49,16 @@ float erro_esq_ant =0 ;
 
 float integral_erro_dir= 0;
 float integral_erro_esq= 0;
+byte wind_up_esq = true;
+byte wind_up_dir = true;
+
 
 float der_erro_dir = 0;
 float der_erro_esq = 0;
 
-float kp = 0.4;
-float Ti = 2;
-float Td = 0.1;
+float kp = 1.63;
+float Ti = 1;
+float Td = 0.0;
 float N = 1;
 
 void IRAM_ATTR f_int1 (){  // É NECESSARIO ESSE ATRIBUTO IRAM_ATTR  //Esta funcao contabiliza quantas vezes o laser direito deu rising 
@@ -113,7 +116,7 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(encoder_dir),f_int1, FALLING);//Um ciclo do encoder é contado quando ele acaba de acender.
   attachInterrupt(digitalPinToInterrupt(encoder_esq),f_int2, FALLING);//Um ciclo do encoder é contado quando ele acaba de acender.
   tempo_atras =millis();
-  
+  tempo_atras2 =millis();  
 
 }
 
@@ -125,6 +128,13 @@ void setup() {
 
 
 void loop() {
+//  if((millis()-tempo_atras2)>1000){
+//
+//    Ti = Ti/2.0;
+//    tempo_atras2 = millis();
+//  }
+//
+//  
 
   if((millis()-tempo_atras)>tempo_aquisicao){
     detachInterrupt(encoder_dir);
@@ -138,11 +148,6 @@ void loop() {
     count_dir = 0;
     count_esq = 0;
     
-    Serial.print(freq_ref);
-    Serial.print(",");    
-    Serial.print(rpm_esq);
-    Serial.print(",");
-    Serial.println(rpm_dir);
 
     erro_dir_ant = erro_dir;
     erro_esq_ant = erro_esq;
@@ -160,29 +165,45 @@ void loop() {
     intensidade_esq = kp*(erro_esq + integral_erro_esq/Ti + Td*der_erro_esq);
 
 
-//    if(intensidade_dir>1250){
-//      integral_erro_dir = 0;//Protecao contra wind-up
-//    }
-//    
-//    if(intensidade_esq>1250){
-//      integral_erro_esq = 0;//Protecao contra wind-up
-//    }
+    if((intensidade_dir>255)||(intensidade_dir<-100)){
+      wind_up_dir = false;//Protecao contra wind-up
+    }
+    
+    if((intensidade_esq>255)|(intensidade_esq<-100)){
+      wind_up_esq = false;//Protecao contra wind-up
+    }
+
+
+
+
         
     if(intensidade_dir>255){
       intensidade_dir=255;//limite da planta pwm
     }
 
-    if(intensidade_dir<80){
-      intensidade_dir = 80;//limite da planta pwm
+    if(intensidade_dir<100){
+      intensidade_dir = 100;//limite da planta pwm
     }
+
+
+
     
     if(intensidade_esq>255){
       intensidade_esq=255;//limite da planta pwm
     }
     
-    if(intensidade_esq<80){
-      intensidade_esq = 80;//limite da planta pwm
+    if(intensidade_esq<100){
+      intensidade_esq =100;//limite da planta pwm
     }
+
+  
+
+      Serial.print(freq_ref);
+      Serial.print(",");
+      Serial.print(rpm_esq);
+      Serial.print(",");
+      Serial.println(rpm_dir);
+
 
 
     motor_dir(1,intensidade_dir);

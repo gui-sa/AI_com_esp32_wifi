@@ -567,6 +567,15 @@ Porem para cargo de testes, tanto do motor, tanto das funcionalidades maximas do
 
 
 
+#### 31/01/2021:
+
+	Hoje finalmente voltei a mexer no projeto kkkkk
+	Na verdade, essa semana.
+	Bom pesquisei um pouco sobre slam... e o que eu recebi é : ninguem faz pra embarcado pq demanda MUITO processamento...
+	Ou seja, terei que investigar outros meios!!
+	Começarei criando interface wifi com python.
+
+	https://randomnerdtutorials.com/esp32-web-server-arduino-ide/
 
 
 

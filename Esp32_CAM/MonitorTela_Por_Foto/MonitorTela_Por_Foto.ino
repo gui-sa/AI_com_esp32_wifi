@@ -14,6 +14,12 @@
 
 #include "BluetoothSerial.h"
 
+// Config TIMER
+long t_stamp = 3600000; // 1 hora
+int lifeSpam = 50; // 50 horas e reinicia
+String DataPath = "_";
+
+
 // BLUETOOTH SETTINGS
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
@@ -99,12 +105,12 @@ void ReadCredential(String path){
   }
   
   file.close();
-//  Serial.println();
-//  Serial.println(ssid);
-//  Serial.println(password);
 }
 
-void OverWriteCredential(String path, String buff){
+
+
+
+void OverWriteFile(String path, String buff){
  
   fs::FS &fs = SD_MMC; 
   Serial.printf("Picture file name: %s\n", path.c_str());
@@ -120,6 +126,33 @@ void OverWriteCredential(String path, String buff){
   
   file.close();
 }
+
+
+
+
+
+void ReadData(String path){
+  fs::FS &fs = SD_MMC; 
+  File file = fs.open(path.c_str(), FILE_READ);
+  if(!file){
+    Serial.println("Failed to open file in reading mode");
+  } 
+  else {
+    String buff = "";
+    while(file.available()){
+        char c =  file.read();
+        buff += c;
+    }
+    DataPath = buff;
+    
+  }
+  
+  file.close();
+}
+
+
+
+
 
 void CameraCapture(String path){
    camera_fb_t * fb = NULL;
@@ -196,7 +229,7 @@ void setup() {
 // Iniciar servicos do MICRO SD  e WIFI(ou bluetooth)  ===================
 
   MicroSDInit();
-  ReadCredential("/credentials"); //ler arquivo de SSID@pass=IP
+  ReadCredential("/credentials"); //ler arquivo de SSID@pass
   int connStatus = initWiFi();
   if(connStatus == 0){
     WiFi.mode( WIFI_MODE_NULL );
@@ -215,7 +248,7 @@ void setup() {
             char c = SerialBT.read();
             buff += c;
           }
-          OverWriteCredential("/credentials",buff);
+          OverWriteFile("/credentials",buff);
           for(int i=0; i<WiFi.macAddress().length();i++){
             SerialBT.write((uint8_t)WiFi.macAddress().c_str()[i]);
           }
@@ -226,7 +259,6 @@ void setup() {
         delay(20);
         timeOut++;
         if(timeOut>=300000){
-          digitalWrite(4,LOW);
           esp_deep_sleep_start();
         }
     }
@@ -247,19 +279,22 @@ void setup() {
   });
 
   server.on("/disconect", HTTP_GET, [] (AsyncWebServerRequest *request) {
-    OverWriteCredential("/credentials"," @ ");
+    OverWriteFile("/credentials"," @ ");
     request->send(SD_MMC, "/index.html", "text/html");
   });
 
-  server.on("/date", HTTP_POST, [] (AsyncWebServerRequest *request) {    
-    if (request->hasParam("date") && request->hasParam("hour")) {
-      Serial.println(request->getParam("date")->value());
-      Serial.println(request->getParam("hour")->value());
-    }
-    else {
-      Serial.println("No message sent");
-    }
-  });
+  server.on("/date",
+            HTTP_POST,
+            [] (AsyncWebServerRequest *request) {},
+            NULL,
+            [] (AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total){
+              String buff = "";
+              for(size_t i=0; i < len; i++){
+                buff += (char)data[i];
+              }
+              OverWriteFile("/data",buff);
+              request->send(200);
+             });
 
   server.serveStatic("/", SD_MMC, "/");
 
@@ -268,5 +303,12 @@ void setup() {
 }
 
 void loop() {
-
+  int t_now = millis();
+  while((millis()-t_now)<t_stamp);
+  ReadData("/data");
+  CameraCapture("/"+DataPath+"L"+lifeSpam+.jpg");
+  lifeSpam--;
+  if(lifeSpam<=0){
+    ESP.restart();
+  }
 }

@@ -11,6 +11,6 @@ fetch('/date', {
     headers: {
         'Content-Type': 'text/plain'
     },
-    body: "D" + now.getDay() + "M" + now.getMonth() + "Y" + now.getFullYear() + "H" + now.getHours() + "N" + now.getMinutes() + "S" + now.getSeconds()
+    body: "D" + now.getDate() + "M" + (now.getMonth() + 1) + "Y" + now.getFullYear() + "H" + now.getHours() + "N" + now.getMinutes() + "S" + now.getSeconds()
 })
     .then(response => console.log(response))

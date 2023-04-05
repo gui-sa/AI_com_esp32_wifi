@@ -76,10 +76,11 @@ int initWiFi() {
 }
 
 void MicroSDInit() { 
-   if(!SD_MMC.begin()){
+   if(!SD_MMC.begin("/sdcard",true)){
     Serial.println("SD Card Mount Failed");
     return;
   }
+  pinMode(4,OUTPUT);
   uint8_t cardType = SD_MMC.cardType();
   if(cardType == CARD_NONE){
     Serial.println("No SD Card attached");
@@ -155,14 +156,19 @@ void ReadData(String path){
 
 
 void CameraCapture(String path){
+
+  digitalWrite(4,HIGH);
+  delay(1000);
    camera_fb_t * fb = NULL;
-  
+
   // Take Picture with Camera
   fb = esp_camera_fb_get();  
   if(!fb) {
     Serial.println("Camera capture failed");
     return;
   }
+
+
   
   fs::FS &fs = SD_MMC; 
   Serial.printf("Picture file name: %s\n", path.c_str());
@@ -178,6 +184,8 @@ void CameraCapture(String path){
   
   file.close();
   esp_camera_fb_return(fb); 
+
+  digitalWrite(4,LOW);
 }
 
 
@@ -185,7 +193,9 @@ void CameraCapture(String path){
 void setup() {
   WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); //disable brownout detector ... loop esta vazio.
   Serial.begin(115200);
-  
+  SPI.begin(13, 12, 14, 4); // SCK, MOSI, MISO, SS
+
+
   
 //===== Camera Init ======================
   camera_config_t config;
@@ -306,7 +316,7 @@ void loop() {
   int t_now = millis();
   while((millis()-t_now)<t_stamp);
   ReadData("/data");
-  CameraCapture("/"+DataPath+"L"+lifeSpam+.jpg");
+  CameraCapture("/"+DataPath+"L"+lifeSpam+".jpg");
   lifeSpam--;
   if(lifeSpam<=0){
     ESP.restart();
